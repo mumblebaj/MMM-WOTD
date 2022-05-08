@@ -1,0 +1,26 @@
+{
+  "name": "mmm-wordoftheday",
+  "version": "1.0.0",
+  "description": "Word of the day for Magic Mirror II",
+  "main": "MMM-WordOfTheDay.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mumblebaj/MMM-AnotherWordofTheDay.git"
+  },
+  "keywords": [
+    "MagicMirror"
+  ],
+  "author": "mumblebaj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mumblebaj/MMM-AnotherWordofTheDay/issues"
+  },
+  "homepage": "https://github.com/mumblebaj/MMM-AnotherWordofTheDay#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.10"
+  }
+}
