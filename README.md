@@ -54,7 +54,7 @@ The following properties can be configured:
 
 | Option                       | Description
 | ---------------------------- | -----------
-| `updateInterval`             | As these are "Word of the Day" it is best to set it to 24hrs (86400000)
+| `updateInterval`             | As this is a "Word of the Day" it is recommended to set the value to 24hrs (86400000)
 | `retryDelay`                 | How long to wait before retry
 | `showExamples`               | If you would like to see some example usages of the word set this to `true`. Default is `true` <br><br> **Possible values:** `true` or `false`
 | `showExampleTranslations`    | If you want the example with its English translation set this to `true` <br><br> **Possible values:** `true` or `false`,
