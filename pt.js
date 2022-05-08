@@ -17,7 +17,7 @@ module.exports = {
 
     getEngData: function($) {
         let lement = {}, englishWords = [];
-        $(".r101-wotd-widget__word").each((index, p) => {
+        $(".r101-wotd-widget__english").each((index, p) => {
             lement.id = index;
             lement.word = p.firstChild.data;
             englishWords.push(lement.word);
