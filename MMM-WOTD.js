@@ -70,7 +70,7 @@ Module.register("MMM-WOTD", {
 
             if(this.config.showExamples) {
                 const list = document.createElement('ol')
-                list.className = "small"
+                list.className = "medium"
 
                 const listItem = document.createElement('li')
 

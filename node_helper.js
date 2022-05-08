@@ -28,11 +28,8 @@ module.exports = NodeHelper.create ({
         if(notification === "WOTD_GET_ES_DATA") {
             this.getESData(payload);
         }
-        if(notification === "WOTD_GET_PT_DATA") {
+        else if(notification === "WOTD_GET_PT_DATA") {
             this.getPTData(payload)
-        } else {
-            console.log("MMM-WOTD: Invalid notification received");
-            return;
-        }
+        } 
     }
 })
