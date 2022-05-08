@@ -66,7 +66,7 @@ Module.register("MMM-WOTD", {
 
             const translation = document.createElement("div")
             translation.innerHTML = this.apiData[0].translation
-            translation.className = "italic medium"
+            translation.className = "bright medium"
             wrapper.appendChild(translation);
 
             if(this.config.showExamples) {
