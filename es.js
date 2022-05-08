@@ -4,7 +4,7 @@ const axios = require('axios');
 module.exports = {
     url: "https://www.spanishdict.com/wordoftheday",
     getesData: function (callback) {
-        axios.get(url).then(({ data }) => {
+        axios.get(this.url).then(({ data }) => {
             const $ = cheerio.load(data);
 
             const container = $(".gl1Y0YQP");
