@@ -17,7 +17,7 @@ Module.register("MMM-WOTD", {
     },
 
     getHeader: function() {
-        return "Word of the Day"
+        return `${this.config.language} Word of the Day`
     },
     
     getData: function() {
