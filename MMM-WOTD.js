@@ -1,4 +1,4 @@
-Module.register("MMM-WordOfTheDay", {
+Module.register("MMM-WOTD", {
     defaults: {
         updateInterval: 86400000,
         retryDelay: 5000,

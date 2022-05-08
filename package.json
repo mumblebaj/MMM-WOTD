@@ -1,8 +1,8 @@
 {
-  "name": "mmm-wordoftheday",
+  "name": "mmm-wotd",
   "version": "1.0.0",
   "description": "Word of the day for Magic Mirror II",
-  "main": "MMM-WordOfTheDay.js",
+  "main": "MMM-WOTD.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
