@@ -1,4 +1,4 @@
-var NodeHelper = require('node-helper');
+var NodeHelper = require('node_helper');
 const axios = require('axios');
 const es = require('./es.js');
 const pt = require('./pt.js');
@@ -20,8 +20,8 @@ module.exports = NodeHelper.create ({
         var self = this;
         
         pt.getptData(function(translationData) {
-            self.sendSocketNotification("WOTD_POR_DATA", translation)
-        })
+            self.sendSocketNotification("WOTD_PT_DATA", translationData)
+        });        
     },
 
     socketNotificationReceived: function(notification, payload) {
