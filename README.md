@@ -58,7 +58,7 @@ The following properties can be configured:
 | `retryDelay`                 | How long to wait before retry
 | `showExamples`               | If you would like to see some example usages of the word set this to `true`. Default is `true` <br><br> **Possible values:** `true` or `false`
 | `showExampleTranslations`    | If you want the example with its English translation set this to `true` <br><br> **Possible values:** `true` or `false`,
-| `language`                   | Which language WOTD would you like? Currently on `Spanish` and `Portuguese` supported<br><br> **Possible values:** `spanish`, `portuguese`
+| `language`                   | Which language WOTD would you like? Currently on `Spanish` and `Portuguese` supported<br><br> **Possible values:** `spanish`, `portuguese`, `german`
 
 ## Updating
 

@@ -23,8 +23,10 @@ Module.register("MMM-WOTD", {
     getData: function() {
         if(this.config.language === "spanish") {
             this.sendSocketNotification("WOTD_GET_ES_DATA", this.config)
-        } else  if (this.config.language === "portuguese") {
+        } else if (this.config.language === "portuguese") {
             this.sendSocketNotification("WOTD_GET_PT_DATA", this.config)
+        } else if (this.config.language === "german") {
+            this.sendSocketNotification("WOTD_GET_DE_DATA", this.config)
         }
     },
 
@@ -46,6 +48,10 @@ Module.register("MMM-WOTD", {
             this.apiData = payload;
             this.updateDom();
         } if (notification === "WOTD_PT_DATA") {
+            console.log('received: ', payload);
+            this.apiData = payload;
+            this.updateDom();
+        } if (notification === "WOTD_DE_DATA") {
             console.log('received: ', payload);
             this.apiData = payload;
             this.updateDom();
