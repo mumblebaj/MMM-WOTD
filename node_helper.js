@@ -25,10 +25,10 @@ module.exports = NodeHelper.create ({
         });        
     },
 
-    getPTData: function() {
+    getDEData: function() {
         var self = this;
         
-        de.getptData(function(translationData) {
+        de.getdeData(function(translationData) {
             self.sendSocketNotification("WOTD_DE_DATA", translationData)
         });        
     },

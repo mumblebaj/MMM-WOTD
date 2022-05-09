@@ -26,7 +26,7 @@ module.exports = {
         return englishWords;
     },
 
-    getptData: function(callback) {
+    getdeData: function(callback) {
         axios.get(this.url).then(({ data }) => {
             const $ = cheerio.load(data, null, true);
 
