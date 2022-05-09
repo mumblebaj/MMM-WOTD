@@ -2,6 +2,7 @@ var NodeHelper = require('node_helper');
 const axios = require('axios');
 const es = require('./es.js');
 const pt = require('./pt.js');
+const de = require('./de.js');
 
 module.exports = NodeHelper.create ({
     start: function() {
@@ -24,12 +25,22 @@ module.exports = NodeHelper.create ({
         });        
     },
 
+    getDEData: function() {
+        var self = this;
+        
+        de.getdeData(function(translationData) {
+            self.sendSocketNotification("WOTD_DE_DATA", translationData)
+        });        
+    },
+
     socketNotificationReceived: function(notification, payload) {
         if(notification === "WOTD_GET_ES_DATA") {
             this.getESData(payload);
         }
         else if(notification === "WOTD_GET_PT_DATA") {
             this.getPTData(payload)
+        } else if(notification === "WOTD_GET_DE_DATA") {
+            this.getDEData(payload)
         } 
     }
 })
