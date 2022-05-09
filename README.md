@@ -40,7 +40,7 @@ Add the module to the modules array in the `config/config.js` file:
             config: {
                         updateInterval: 86400000,
                         retryDelay: 5000,
-                        showExamples: true, "todayRecovered"]
+                        showExamples: true,
                         showExampleTranslations: true,
                         language: "spanish"
                     }
