@@ -11,6 +11,9 @@ Yet another Word of the Day module for [MagicMirror²](https://magicmirror.build
 ## Portuguese Example
 ![Example](image-2.png) 
 
+## German Example
+![Example](image-3.png) 
+
 
 ## Dependencies
 - axios@0.27.2
