@@ -5,14 +5,14 @@ module.exports = {
     url: "https://www.spanishpod101.com/spanish-phrases/",
 
     getESData: function($) {
-        let element = {}, germanWords = [];
+        let element = {}, spanishWords = [];
         $(".r101-wotd-widget__word").each((index, p) => {
             element.id = index;
             element.word = p.firstChild.data;
-            germanWords.push(element.word);
+            spanishWords.push(element.word);
         })
 
-        return germanWords;
+        return spanishWords;
     },
 
     getEngData: function($) {
