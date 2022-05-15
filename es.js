@@ -2,41 +2,51 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 
 module.exports = {
-    url: "https://www.spanishdict.com/wordoftheday",
-    getesData: function (callback) {
+    url: "https://www.spanishpod101.com/spanish-phrases/",
+
+    getESData: function($) {
+        let element = {}, germanWords = [];
+        $(".r101-wotd-widget__word").each((index, p) => {
+            element.id = index;
+            element.word = p.firstChild.data;
+            germanWords.push(element.word);
+        })
+
+        return germanWords;
+    },
+
+    getEngData: function($) {
+        let lement = {}, englishWords = [];
+        $(".r101-wotd-widget__english").each((index, p) => {
+            lement.id = index;
+            lement.word = p.firstChild.data;
+            englishWords.push(lement.word);
+        })
+
+        return englishWords;
+    },
+
+    getesData: function(callback) {
         axios.get(this.url).then(({ data }) => {
-            const $ = cheerio.load(data);
+            const $ = cheerio.load(data, null, true);
 
-            const container = $(".gl1Y0YQP");
+            let translationData = [];
 
-            const translationData = [];
+            const german = this.getESData($);
 
-            for (let i = 0; i < container.length; i++) {
-                const currentContainer = container[i];
-                const container1 = $(".xiQBRZra")[i];
-                const container2 = $(".KkXPxEB8")[i];
+            const english = this.getEngData($);
 
-                // Get Spanish Word
-                const word = $(currentContainer).find("h3");
-                // Get English Translation
-                const translation = word.next();
-
-                // Get Spanish Examples
-                const spanishExample = $(container1);
-
-                // Get English Translation
-                const englishExample = $(container2);
-
-                translationData.push({
-                    "word": word.text(),
-                    "translation": translation.text(),
-                    "examples": {
-                        "wordex": spanishExample.text(),
-                        "wordextr": englishExample.text()
-                    }
-                })
-            }
+            translationData.push({
+                "word": german[0],
+                "translation": english[0],
+                "examples": {
+                    "wordex": german[1],
+                    "wordextr": english[1],
+                }
+            })
             callback(translationData);
         })
+
+        
     }
 }
