@@ -34,8 +34,9 @@ module.exports = NodeHelper.create ({
     },
 
     socketNotificationReceived: function(notification, payload) {
+
         const language = this.payload.language
-        language.foreach(lang => {
+        language.forEach(lang => {
             var url = `https://www.${lang}pod101.com/${lang}-phrases/`
             this.getData(url)
         })
