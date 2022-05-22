@@ -1,6 +1,6 @@
 var NodeHelper = require('node_helper');
 const axios = require('axios');
-const wotd = require('./de.js');
+const wotd = require('./wotd.js');
 
 module.exports = NodeHelper.create ({
     start: function() {
