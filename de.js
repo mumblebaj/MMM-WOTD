@@ -2,7 +2,7 @@ var axios = require('axios');
 var cheerio = require('cheerio');
 
 module.exports = {
-    url: "https://www.germanpod101.com/german-phrases/",
+    // url: "https://www.germanpod101.com/german-phrases/",
 
     getDEData: function($) {
         let element = {}, germanWords = [];
@@ -26,7 +26,8 @@ module.exports = {
         return englishWords;
     },
 
-    getData: function(callback) {
+    getData: function(callback, obj) {
+        var url = obj
         axios.get(this.url).then(({ data }) => {
             const $ = cheerio.load(data, null, true);
 
