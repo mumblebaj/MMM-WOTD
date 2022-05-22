@@ -7,10 +7,10 @@ module.exports = NodeHelper.create ({
         console.log("Starting node_helper for: " + this.name);
     },
 
-    getData: function(url) {
+    getwotdData: function(url) {
         var self = this;
         
-        wotd.getData(function(translationData) {
+        wotd.getWotdData(function(translationData) {
             self.sendSocketNotification("WOTD_DATA", translationData)
         }, url);        
     },
@@ -20,7 +20,7 @@ module.exports = NodeHelper.create ({
         const language = this.payload.language
         language.forEach(lang => {
             var url = `https://www.${lang}pod101.com/${lang}-phrases/`
-            this.getData(url)
+            this.getwotdData(url)
         })
     }
 })
