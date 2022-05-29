@@ -65,7 +65,7 @@ The following properties can be configured:
 
 ## Updating
 
-To update the module to the latest version, use your terminal to go to your MMM-CovidStats module folder and type the following command:
+To update the module to the latest version, use your terminal to go to your MMM-WOTD module folder and type the following command:
 
 ````
 cd MMM-WOTD
