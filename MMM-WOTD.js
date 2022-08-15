@@ -33,7 +33,7 @@ Module.register("MMM-WOTD", {
       },
 
     getHeader: function() {
-        return `${this.config.language} Word of the Day`
+        return `Word of the Day`
     },
     
     getData: function() {

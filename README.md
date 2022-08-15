@@ -1,9 +1,14 @@
 # MMM-WOTD
 
 
-Yet another Word of the Day module for [MagicMirror²](https://magicmirror.builders). Difference with this one is that you can select `Spanish` or `Portuguese`. Other languages can be added at a later stage.
+Yet another Word of the Day module for [MagicMirror²](https://magicmirror.builders). Difference with this one is that you can select `Spanish` or `Portuguese` and some other lamguages. See config section for supported languages.
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+
+## Support
+If you like my module you can support my work by giving me a star ir buy me a coffee.
+
+<a href="https://www.buymeacoffee.com/mumblebaj" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Beer" style="height: 45px !important;width: 180px !important;" ></a>
 
 ## Spanish Example
 ![Example](image-1.png) 
@@ -45,7 +50,7 @@ Add the module to the modules array in the `config/config.js` file:
                         retryDelay: 5000,
                         showExamples: true,
                         showExampleTranslations: true,
-                        language: "spanish"
+                        language: ["spanish"]
                     }
         },
 ````
@@ -61,11 +66,11 @@ The following properties can be configured:
 | `retryDelay`                 | How long to wait before retry
 | `showExamples`               | If you would like to see some example usages of the word set this to `true`. Default is `true` <br><br> **Possible values:** `true` or `false`
 | `showExampleTranslations`    | If you want the example with its English translation set this to `true` <br><br> **Possible values:** `true` or `false`,
-| `language`                   | Which language WOTD would you like? Currently on `Spanish` and `Portuguese` supported<br><br> **Possible values:** `afrikaans`, `arabic`, `bulgarian`, `cantonese`, `chinese`, `czech`, `danish`, `dutch`, `english`, `filipino`, `finnish`, `french`, `german`, `greek`, `hebrew`, `hindi`, `hungarian`, `indonesian`, `italian`, `japanese`, `korean`, `norwegian`, `persian`, `polish`, `portuguese`, `romanian`, `russian`, `spanish`, `swahili`, `swedish`, `tha`, `turkish`, `urdu`, `vietnamese`
+| `language`                   | An Array of Languages. Which language WOTD would you like? Various Languages supported<br><br> **Possible values:** `afrikaans`, `arabic`, `bulgarian`, `dutch`, `english`, `filipino`, `finnish`, `french`, `german`, `greek`, `hebrew`, `hindi`, `hungarian`, `indonesian`, `italian`, `japanese`, `korean`, `norwegian`, `persian`, `polish`, `portuguese`, `romanian`, `russian`, `spanish`, `swahili`, `swedish`, `thai`, `turkish`, `urdu`, `vietnamese`
 
 ## Updating
 
-To update the module to the latest version, use your terminal to go to your MMM-CovidStats module folder and type the following command:
+To update the module to the latest version, use your terminal to go to your MMM-WOTD module folder and type the following command:
 
 ````
 cd MMM-WOTD
