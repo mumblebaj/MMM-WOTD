@@ -9,7 +9,7 @@ Module.register("MMM-WOTD", {
 
     start: function() {
         Log.info(`Starting module: ${this.name}`);
-
+        suspended = false;
         this.apiData = null;
 
         this.getData();
@@ -23,13 +23,13 @@ Module.register("MMM-WOTD", {
       resume: function () {
         Log.info('Resuming module ' + this.name);
         Log.debug('with config: ' + JSON.stringify(this.config));
-        this.suspend = false;
+        this.suspended = false;
         this.updateDom()
       },
     
       suspend: function () {
         Log.info('Suspending module ' + this.name);
-        this.suspend = true;
+        this.suspended = true;
       },
 
     getHeader: function() {
