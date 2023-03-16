@@ -9,25 +9,35 @@ Module.register("MMM-WOTD", {
 
     start: function() {
         Log.info(`Starting module: ${this.name}`);
-
+        suspended = false;
         this.apiData = null;
 
         this.getData();
         this.scheduleUpdate();
     },
 
+    stop: function () {
+        Log.info('Stopping module ' + this.name);
+      },
+    
+      resume: function () {
+        Log.info('Resuming module ' + this.name);
+        Log.debug('with config: ' + JSON.stringify(this.config));
+        this.suspended = false;
+        this.updateDom()
+      },
+    
+      suspend: function () {
+        Log.info('Suspending module ' + this.name);
+        this.suspended = true;
+      },
+
     getHeader: function() {
-        return `${this.config.language} Word of the Day`
+        return `Word of the Day`
     },
     
     getData: function() {
-        if(this.config.language === "spanish") {
-            this.sendSocketNotification("WOTD_GET_ES_DATA", this.config)
-        } else if (this.config.language === "portuguese") {
-            this.sendSocketNotification("WOTD_GET_PT_DATA", this.config)
-        } else if (this.config.language === "german") {
-            this.sendSocketNotification("WOTD_GET_DE_DATA", this.config)
-        }
+        this.sendSocketNotification("WOTD_GET_DATA", this.config)
     },
 
     scheduleUpdate: function(delay) {
@@ -43,19 +53,21 @@ Module.register("MMM-WOTD", {
     },
 
     socketNotificationReceived: function(notification, payload) {
-        if (notification === "WOTD_ESP_DATA") {
+        if (notification === "WOTD_DATA") {
             console.log('received:', payload);
             this.apiData = payload;
             this.updateDom();
-        } if (notification === "WOTD_PT_DATA") {
-            console.log('received: ', payload);
-            this.apiData = payload;
-            this.updateDom();
-        } if (notification === "WOTD_DE_DATA") {
-            console.log('received: ', payload);
-            this.apiData = payload;
-            this.updateDom();
-        } else {
+        } 
+        // if (notification === "WOTD_PT_DATA") {
+        //     console.log('received: ', payload);
+        //     this.apiData = payload;
+        //     this.updateDom();
+        // } if (notification === "WOTD_DE_DATA") {
+        //     console.log('received: ', payload);
+        //     this.apiData = payload;
+        //     this.updateDom();
+        // } 
+        else {
             Log.log("No Data Received");
             return;
         }

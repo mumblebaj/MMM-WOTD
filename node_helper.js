@@ -1,46 +1,26 @@
 var NodeHelper = require('node_helper');
 const axios = require('axios');
-const es = require('./es.js');
-const pt = require('./pt.js');
-const de = require('./de.js');
+const wotd = require('./wotd.js');
 
 module.exports = NodeHelper.create ({
     start: function() {
         console.log("Starting node_helper for: " + this.name);
     },
 
-    getESData: function() {
-        var self = this;
-
-        es.getesData(function(translationData) {
-            self.sendSocketNotification("WOTD_ESP_DATA", translationData)
-        });
-    },
-
-    getPTData: function() {
+    getwotdData: function(url) {
         var self = this;
         
-        pt.getptData(function(translationData) {
-            self.sendSocketNotification("WOTD_PT_DATA", translationData)
-        });        
-    },
-
-    getDEData: function() {
-        var self = this;
-        
-        de.getdeData(function(translationData) {
-            self.sendSocketNotification("WOTD_DE_DATA", translationData)
-        });        
+        wotd.getWotdData(function(translationData) {
+            self.sendSocketNotification("WOTD_DATA", translationData)
+        }, url);        
     },
 
     socketNotificationReceived: function(notification, payload) {
-        if(notification === "WOTD_GET_ES_DATA") {
-            this.getESData(payload);
-        }
-        else if(notification === "WOTD_GET_PT_DATA") {
-            this.getPTData(payload)
-        } else if(notification === "WOTD_GET_DE_DATA") {
-            this.getDEData(payload)
-        } 
+
+        const language = payload.language
+        language.forEach(lang => {
+            var url = `https://www.${lang}pod101.com/${lang}-phrases/`
+            this.getwotdData(url)
+        })
     }
 })
