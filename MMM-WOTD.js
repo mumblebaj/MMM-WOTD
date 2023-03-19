@@ -75,6 +75,7 @@ Module.register("MMM-WOTD", {
 
     getDom: function() {
         const wrapper = document.createElement("div");
+        wrapper.id = "wotd"
         if(this.apiData) {
 
             const word = document.createElement("div");
@@ -101,6 +102,10 @@ Module.register("MMM-WOTD", {
                     const we = document.createElement('div')
                     we.innerHTML = this.apiData[0].examples.wordextr
                     listItem.appendChild(we)
+
+                    const we2 = document.createElement('div')
+                    we.innerHTML = this.apiData[0].examples.wordextr2
+                    listItem.appendChild(we2)
 
                 }
                 list.appendChild(listItem)
