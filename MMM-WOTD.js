@@ -57,17 +57,7 @@ Module.register("MMM-WOTD", {
             console.log('received:', payload);
             this.apiData = payload;
             this.updateDom();
-        } 
-        // if (notification === "WOTD_PT_DATA") {
-        //     console.log('received: ', payload);
-        //     this.apiData = payload;
-        //     this.updateDom();
-        // } if (notification === "WOTD_DE_DATA") {
-        //     console.log('received: ', payload);
-        //     this.apiData = payload;
-        //     this.updateDom();
-        // } 
-        else {
+        } else {
             Log.log("No Data Received");
             return;
         }
@@ -104,7 +94,7 @@ Module.register("MMM-WOTD", {
                     listItem.appendChild(we)
 
                     const we2 = document.createElement('div')
-                    we.innerHTML = this.apiData[0].examples.wordextr2
+                    we2.innerHTML = this.apiData[0].examples.wordextr2
                     listItem.appendChild(we2)
 
                 }
