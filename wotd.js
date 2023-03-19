@@ -20,7 +20,6 @@ module.exports = {
         $(".r101-wotd-widget__english").each((index, p) => {
             lement.id = index;
             lement.word = p.firstChild.data;
-            lement.word2 = p.secondChild.data;
             englishWords.push(lement.word);
         })
 
