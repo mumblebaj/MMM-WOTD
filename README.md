@@ -24,6 +24,11 @@ If you like my module you can support my work by giving me a star ir buy me a co
 - axios@0.27.2
 - cheerio@1.0.0-rc.10
 
+## Updates
+- Added support for multiple languages
+- You can now add multiple languages as an input array ["spanish", "german", "arabic", "dutch"] or use a single language ["spanish"]
+- Added a rotateInterval which would swop between the languages selected. Has to be in milli-seconds, i.e. 1000*30 = 30 second interval
+
 ## Installation
 
 In your terminal, go to your MagicMirror's Module folder:
@@ -50,7 +55,7 @@ Add the module to the modules array in the `config/config.js` file:
                         retryDelay: 5000,
                         showExamples: true,
                         showExampleTranslations: true,
-                        language: ["spanish"]
+                        language: ["spanish", "german", "arabic", "dutch"]
                     }
         },
 ````
@@ -64,6 +69,7 @@ The following properties can be configured:
 | ---------------------------- | -----------
 | `updateInterval`             | As this is a "Word of the Day" it is recommended to set the value to 24hrs (86400000)
 | `retryDelay`                 | How long to wait before retry
+| `rotateInterval`             | Interval at which to roate between languages when multiple languages have been selected
 | `showExamples`               | If you would like to see some example usages of the word set this to `true`. Default is `true` <br><br> **Possible values:** `true` or `false`
 | `showExampleTranslations`    | If you want the example with its English translation set this to `true` <br><br> **Possible values:** `true` or `false`,
 | `language`                   | An Array of Languages. Which language WOTD would you like? Various Languages supported<br><br> **Possible values:** `afrikaans`, `arabic`, `bulgarian`, `dutch`, `english`, `filipino`, `finnish`, `french`, `german`, `greek`, `hebrew`, `hindi`, `hungarian`, `indonesian`, `italian`, `japanese`, `korean`, `norwegian`, `persian`, `polish`, `portuguese`, `romanian`, `russian`, `spanish`, `swahili`, `swedish`, `thai`, `turkish`, `urdu`, `vietnamese`
