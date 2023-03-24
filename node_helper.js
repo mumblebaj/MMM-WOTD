@@ -15,7 +15,7 @@ module.exports = NodeHelper.create({
             todayWord.push(element.word);
         })
 
-        return wotd;
+        return todayWord;
     },
 
     getEngData: function ($) {
@@ -75,7 +75,7 @@ module.exports = NodeHelper.create({
 
             })
             var self = this;
-            this.sendSocketNOtification("WOTD_DATA", result)
+            this.sendSocketNotification("WOTD_DATA", result)
         })
         .catch ((error) => {
             console.error(error)

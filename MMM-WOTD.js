@@ -116,6 +116,11 @@ Module.register("MMM-WOTD", {
         const wrapper = document.createElement("div");
         wrapper.id = "wotd"
 
+        const lang = document.createElement("div");
+        lang.id = "wotd-lang"
+        lang.className = "bold medium"
+        wrapper.appendChild(lang);
+
         const word = document.createElement("div");
         word.id = "wotd-word"
         word.className = "bold large"
