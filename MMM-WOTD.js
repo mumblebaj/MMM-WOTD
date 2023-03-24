@@ -80,11 +80,11 @@ Module.register("MMM-WOTD", {
             var wr = document.getElementById("wotd-wr")
             var we = document.getElementById("wotd-we")
             var we2 = document.getElementById("wotd-we2")
-            mylang.innerHTML = t.language
-            wotdword.innerHTML = t.data[0].word
-            translation.innerHTML = t.data[0].translation
-            wr.innerHTML = t.data[0].examples.wordex
-            we.innerHTML = t.data[0].examples.wordextr
+            mylang.innerHTML = `Language: ${t.language}`
+            wotdword.innerHTML = `Word - ${t.data[0].word}`
+            translation.innerHTML = `Meaning - ${t.data[0].translation}`
+            wr.innerHTML = `${t.data[0].examples.wordex}`
+            we.innerHTML = `${t.data[0].examples.wordextr}`
             we2.innerHTML = t.data[0].examples.wordextr2 ? t.data[0].examples.wordextr2 : ""
 
             setTimeout(() => {
@@ -102,11 +102,11 @@ Module.register("MMM-WOTD", {
             var wr = document.getElementById("wotd-wr")
             var we = document.getElementById("wotd-we")
             var we2 = document.getElementById("wotd-we2")
-            mylang.innerHTML = t.language
-            wotdword.innerHTML = t.data[0].word
-            translation.innerHTML = t.data[0].translation
-            wr.innerHTML = t.data[0].examples.wordex
-            we.innerHTML = t.data[0].examples.wordextr
+            mylang.innerHTML = `Language: ${t.language}`
+            wotdword.innerHTML = `Word - ${t.data[0].word}`
+            translation.innerHTML = `Meaning - ${t.data[0].translation}`
+            wr.innerHTML = `- ${t.data[0].examples.wordex}`
+            we.innerHTML = `- ${t.data[0].examples.wordextr}`
             we2.innerHTML = t.data[0].examples.wordextr2 ? t.data[0].examples.wordextr2 : ""
         }
         return wrapper
@@ -118,17 +118,17 @@ Module.register("MMM-WOTD", {
 
         const lang = document.createElement("div");
         lang.id = "wotd-lang"
-        lang.className = "bold medium"
+        lang.className = "bright bold medium"
         wrapper.appendChild(lang);
 
         const word = document.createElement("div");
         word.id = "wotd-word"
-        word.className = "bold large"
+        word.className = "bold bright medium"
         wrapper.appendChild(word);
 
         const translation = document.createElement("div")
         translation.id = "wotd-translation"
-        translation.className = "bright medium"
+        translation.className = "medium"
         wrapper.appendChild(translation);
 
         if (this.config.showExamples) {
