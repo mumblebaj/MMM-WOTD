@@ -80,9 +80,9 @@ Module.register("MMM-WOTD", {
             var wr = document.getElementById("wotd-wr")
             var we = document.getElementById("wotd-we")
             var we2 = document.getElementById("wotd-we2")
-            mylang.innerHTML = `Language: ${t.language}`
-            wotdword.innerHTML = `Word - ${t.data[0].word}`
-            translation.innerHTML = `Meaning - ${t.data[0].translation}`
+            mylang.innerHTML = "Language - " + `${t.language}`.toUpperCase()
+            wotdword.innerHTML = "Word - " + `${t.data[0].word}`.toUpperCase()
+            translation.innerHTML = "Meaning - " + `${t.data[0].translation}`.toUpperCase()
             wr.innerHTML = `${t.data[0].examples.wordex}`
             we.innerHTML = `${t.data[0].examples.wordextr}`
             we2.innerHTML = t.data[0].examples.wordextr2 ? t.data[0].examples.wordextr2 : ""
@@ -102,9 +102,9 @@ Module.register("MMM-WOTD", {
             var wr = document.getElementById("wotd-wr")
             var we = document.getElementById("wotd-we")
             var we2 = document.getElementById("wotd-we2")
-            mylang.innerHTML = `Language: ${t.language}`
-            wotdword.innerHTML = `Word - ${t.data[0].word}`
-            translation.innerHTML = `Meaning - ${t.data[0].translation}`
+            mylang.innerHTML = "Language - " + `${t.language}`.toUpperCase()
+            wotdword.innerHTML = "Word - " + `${t.data[0].word}`.toUpperCase()
+            translation.innerHTML = "Meaning - " + `${t.data[0].translation}`.toUpperCase()
             wr.innerHTML = `- ${t.data[0].examples.wordex}`
             we.innerHTML = `- ${t.data[0].examples.wordextr}`
             we2.innerHTML = t.data[0].examples.wordextr2 ? t.data[0].examples.wordextr2 : ""
@@ -118,7 +118,7 @@ Module.register("MMM-WOTD", {
 
         const lang = document.createElement("div");
         lang.id = "wotd-lang"
-        lang.className = "bright bold medium"
+        lang.className = "bright small"
         wrapper.appendChild(lang);
 
         const word = document.createElement("div");
