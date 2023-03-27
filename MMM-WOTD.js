@@ -132,10 +132,10 @@ Module.register("MMM-WOTD", {
         wrapper.appendChild(translation);
 
         if (this.config.showExamples) {
-            const list = document.createElement('ol')
+            const list = document.createElement('div')
             list.className = "small"
 
-            const listItem = document.createElement('li')
+            const listItem = document.createElement('div')
 
             const wr = document.createElement('div')
             wr.id = "wotd-wr"
