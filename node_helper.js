@@ -3,6 +3,8 @@ const axios = require('axios');
 var cheerio = require('cheerio');
 
 module.exports = NodeHelper.create({
+    requiresVersion: '2.22.0',
+    
     start: function () {
         console.log("Starting node_helper for: " + this.name);
     },

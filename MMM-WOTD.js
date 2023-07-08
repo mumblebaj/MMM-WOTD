@@ -27,7 +27,7 @@ Module.register("MMM-WOTD", {
         Log.info('Resuming module ' + this.name);
         Log.debug('with config: ' + JSON.stringify(this.config));
         this.suspended = false;
-        this.updateDom()
+        this.draw(this.apiData)
     },
 
     suspend: function () {
