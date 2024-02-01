@@ -35,9 +35,9 @@ Module.register("MMM-WOTD", {
         this.suspended = true;
     },
 
-    getHeader: function () {
-        return `Word of the Day`
-    },
+    // getHeader: function () {
+    //     return `Word of the Day`
+    // },
 
     getData: function () {
         this.sendSocketNotification("WOTD_GET_DATA", this.config)
@@ -57,7 +57,6 @@ Module.register("MMM-WOTD", {
 
     socketNotificationReceived: function (notification, payload) {
         if (notification === "WOTD_DATA") {
-            console.log('received:', payload);
             this.apiData = payload;
             this.draw(this.apiData);
         } else {
