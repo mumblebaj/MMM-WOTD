@@ -1,6 +1,6 @@
 {
   "name": "mmm-wotd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Word of the day for Magic Mirror II",
   "main": "MMM-WOTD.js",
   "scripts": {
