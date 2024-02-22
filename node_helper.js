@@ -32,8 +32,16 @@ module.exports = NodeHelper.create({
     },
 
     getWotdData: async function (languages) {
+        var lang = "";
         const promises = languages.map(language => {
-            return axios.get(`https://www.${language}pod101.com/${language}-phrases/`).then(({data}) => {
+
+            if(language === "english") {
+				lang = language + "class101"
+			} else {
+				lang = language + "pod101"
+			}
+
+            return axios.get(`https://www.${lang}.com/${language}-phrases/`).then(({data}) => {
                 const $ = cheerio.load(data, null, true);
                 // get the word of the day
                 const wordOftheDay = this.getWordOfTheDay($);

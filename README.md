@@ -25,9 +25,8 @@ If you like my module you can support my work by giving me a star ir buy me a co
 - cheerio@1.0.0-rc.10
 
 ## Updates
-- Added support for multiple languages
-- You can now add multiple languages as an input array ["spanish", "german", "arabic", "dutch"] or use a single language ["spanish"]
-- Added a rotateInterval which would swop between the languages selected. Has to be in milli-seconds, i.e. 1000*30 = 30 second interval
+### v1.0.3
+- New URL for English Language.
 
 ## Installation
 

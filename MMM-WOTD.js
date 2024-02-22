@@ -81,10 +81,10 @@ Module.register("MMM-WOTD", {
             var we2 = document.getElementById("wotd-we2")
             mylang.innerHTML = "Language - " + `${t.language}`.toUpperCase()
             wotdword.innerHTML = "Word - " + `${t.data[0].word}`.toUpperCase()
-            translation.innerHTML = "Meaning - " + `${t.data[0].translation}`.toUpperCase()
+            translation.innerHTML = "Meaning - " + (t.data[0].translation ? `${t.data[0].translation}`.toUpperCase() : "")
             wr.innerHTML = `${t.data[0].examples.wordex}`
-            we.innerHTML = `${t.data[0].examples.wordextr}`
-            we2.innerHTML = t.data[0].examples.wordextr2 ? t.data[0].examples.wordextr2 : ""
+            we.innerHTML = (t.data[0].examples.wordextr ? `${t.data[0].examples.wordextr}` : "")
+            we2.innerHTML = (t.data[0].examples.wordextr2 ? `${t.data[0].examples.wordextr2}` : "")
 
             setTimeout(() => {
 
@@ -105,8 +105,8 @@ Module.register("MMM-WOTD", {
             wotdword.innerHTML = "Word - " + `${t.data[0].word}`.toUpperCase()
             translation.innerHTML = "Meaning - " + `${t.data[0].translation}`.toUpperCase()
             wr.innerHTML = `- ${t.data[0].examples.wordex}`
-            we.innerHTML = `- ${t.data[0].examples.wordextr}`
-            we2.innerHTML = t.data[0].examples.wordextr2 ? t.data[0].examples.wordextr2 : ""
+            we.innerHTML = (t.data[0].examples.wordextr ? `${t.data[0].examples.wordextr}` : "")
+            we2.innerHTML = (t.data[0].examples.wordextr2 ? `${t.data[0].examples.wordextr2}` : "")
         }
         return wrapper
     },
