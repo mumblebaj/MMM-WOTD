@@ -4,64 +4,97 @@ var cheerio = require('cheerio');
 
 module.exports = NodeHelper.create({
     requiresVersion: '2.22.0',
-    
+
     start: function () {
         console.log("Starting node_helper for: " + this.name);
     },
+    
+    getData: function ($) {
+        let lement = {};
 
-    getWordOfTheDay: function ($) {
-        let element = {}, todayWord = [];
-        $(".r101-wotd-widget__word").each((index, p) => {
-            element.id = index;
-            element.word = p.firstChild.data;
-            todayWord.push(element.word);
-        })
+        // Get the data-wordday attribute from the #word_page element
+        const wordDayData = $("#word_page").attr("data-wordday");
 
-        return todayWord;
-    },
+        if (wordDayData) {
+            // Parse the JSON string into an object
+            const wordDayObj = JSON.parse(wordDayData);
 
-    getEngData: function ($) {
-        let lement = {}, englishWords = [];
-        $(".r101-wotd-widget__english").each((index, p) => {
-            lement.id = index;
-            lement.word = p.firstChild.data;
-            englishWords.push(lement.word);
-        })
+            // Extract the required fields
+            lement.text = wordDayObj.text || null;
+            lement.english = wordDayObj.english || null;
+            lement.meaning = wordDayObj.meaning || null;
 
-        return englishWords;
+            // Get the first two samples, if available
+            if (wordDayObj.samples && wordDayObj.samples.length >= 2) {
+                lement.samples = wordDayObj.samples.slice(0, 2).map(sample => ({
+                            text: sample.text,
+                            english: sample.english,
+                            audio: sample.audio_english
+                        }));
+            } else {
+                lement.samples = []; // Handle cases where there are no or less than 2 samples
+            }
+        } else {
+            console.error("No data-wordday attribute found on #word_page.");
+        }
+
+        //console.log("Extracted Data:", lement);
+        return lement;
     },
 
     getWotdData: async function (languages) {
         var lang = "";
         const promises = languages.map(language => {
 
-            if(language === "english") {
-				lang = language + "class101"
-			} else {
-				lang = language + "pod101"
-			}
+            if (language === "english") {
+                lang = language + "class101"
+                    return axios.get(`https://www.${lang}.com/${language}-phrases/`).then(({
+                            data
+                        }) => {
 
-            return axios.get(`https://www.${lang}.com/${language}-phrases/`).then(({data}) => {
-                const $ = cheerio.load(data, null, true);
-                // get the word of the day
-                const wordOftheDay = this.getWordOfTheDay($);
-                // get the english translation
-                const english = this.getEngData($);
+                        const $ = cheerio.load(data, null, true);
+						
+						// get the data
+                        const english = this.getData($);
 
-                return {
-                    "language": language,
-                    "word": wordOftheDay[0],
-                    "translation": english[0],
-                    "examples": {
-                        "wordex": wordOftheDay[1],
-                        "wordextr": english[1],
-                        "wordextr2": english[2]
-                    }
-                }
-            })
+                        return {
+                            "language": language,
+                            "word": english.text,
+                            "translation": english.english,
+                            "examples": {
+                                "wordex": "",
+                                "wordextr": english.samples[0].text,
+                                "wordextr2": english.samples[1].text
+                            }
+                        }
+                    })
+            } else {
+                lang = language + "pod101"
+                    return axios.get(`https://www.${lang}.com/${language}-phrases/`).then(({
+                            data
+                        }) => {
+
+                        const $ = cheerio.load(data, null, true);
+
+                        // get the data
+                        const english = this.getData($);
+
+                        return {
+                            "language": language,
+                            "word": english.text,
+                            "translation": english.english,
+                            "examples": {
+                                "wordex": english.meaning,
+                                "wordextr": english.samples[0].text,
+                                "wordextr2": english.samples[0].english
+                            }
+                        }
+                    })
+            }
+
         })
 
-        const results = await Promise.all(promises);
+            const results = await Promise.all(promises);
 
         const combinedResults = {};
 
@@ -80,21 +113,19 @@ module.exports = NodeHelper.create({
     fetchData: function (languages) {
         mydata = [];
         mydata = this.getWotdData(languages)
-        .then((result) => {
-            result.forEach(languageResult => {
-
+            .then((result) => {
+                result.forEach(languageResult => {})
+                var self = this;
+                this.sendSocketNotification("WOTD_DATA", result)
             })
-            var self = this;
-            this.sendSocketNotification("WOTD_DATA", result)
-        })
-        .catch ((error) => {
-            console.error(error)
-        })
+            .catch((error) => {
+                console.error(error)
+            })
     },
 
     socketNotificationReceived: function (notification, payload) {
         var languages = payload.language
-        this.fetchData(languages)
+            this.fetchData(languages)
 
     }
 })

@@ -3,6 +3,7 @@
 
 Yet another Word of the Day module for [MagicMirror²](https://magicmirror.builders). Difference with this one is that you can select `Spanish` or `Portuguese` and some other lamguages. See config section for supported languages.
 
+[![Platform](https://img.shields.io/badge/platform-MagicMirror-informational)](https://MagicMirror.builders)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
 ## Support
@@ -25,6 +26,10 @@ If you like my module you can support my work by giving me a star ir buy me a co
 - cheerio@1.0.0-rc.10
 
 ## Updates
+### v1.1.0
+- Source changed and as a result module had to change. 
+- Updated module to extract the information from new elements
+
 ### v1.0.3
 - New URL for English Language.
 
