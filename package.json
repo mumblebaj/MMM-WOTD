@@ -1,7 +1,7 @@
 {
   "name": "mmm-wotd",
   "version": "1.1.0",
-  "description": "Word of the day for Magic Mirror II",
+  "description": "Word of the day for MagicMirror²",
   "main": "MMM-WOTD.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,10 @@
     "url": "git+https://github.com/mumblebaj/MMM-AnotherWordofTheDay.git"
   },
   "keywords": [
-    "MagicMirror"
+    "MagicMirror²",
+    "Education",
+    "Learning",
+    "WOTD"
   ],
   "author": "mumblebaj",
   "license": "MIT",
