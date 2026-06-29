@@ -25,7 +25,7 @@ module.exports = NodeHelper.create({
             lement.meaning = wordDayObj.meaning || null;
 
             // Get the first two samples, if available
-            if (wordDayObj.samples && wordDayObj.samples.length >= 2) {
+            if (Array.isArray(wordDayObj.samples) && wordDayObj.samples.length) {
                 lement.samples = wordDayObj.samples.slice(0, 2).map(sample => ({
                             text: sample.text,
                             english: sample.english,
@@ -63,8 +63,8 @@ module.exports = NodeHelper.create({
                             "translation": english.english,
                             "examples": {
                                 "wordex": "",
-                                "wordextr": english.samples[0].text,
-                                "wordextr2": english.samples[1].text
+                                "wordextr": english.samples[0]?.text || "",
+                                "wordextr2": english.samples[1]?.text || ""
                             }
                         }
                     })
@@ -85,8 +85,8 @@ module.exports = NodeHelper.create({
                             "translation": english.english,
                             "examples": {
                                 "wordex": english.meaning,
-                                "wordextr": english.samples[0].text,
-                                "wordextr2": english.samples[0].english
+                                "wordextr": english.samples[0]?.text || "",
+                                "wordextr2": english.samples[0]?.english || ""
                             }
                         }
                     })
