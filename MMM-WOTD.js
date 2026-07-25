@@ -5,6 +5,7 @@ Module.register("MMM-WOTD", {
         rotateInterval: 1000 * 60,
         showExamples: true,
         showExampleTranslations: true,
+        exampleWordsPerLine: 20,
         language: ["spanish"]  //spanish or portuguese
     },
 
@@ -80,16 +81,20 @@ Module.register("MMM-WOTD", {
     setWrappedExampleText: function (element, htmlText) {
         if (!element) return;
 
+        const wordsPerLine = Number.isInteger(this.config.exampleWordsPerLine) && this.config.exampleWordsPerLine > 0
+            ? this.config.exampleWordsPerLine
+            : 20;
+
         element.innerHTML = htmlText || "";
         const exampleSpan = element.querySelector(".example-text");
 
         if (exampleSpan) {
-            exampleSpan.textContent = this.formatWordsPerLine(exampleSpan.textContent, 20);
+            exampleSpan.textContent = this.formatWordsPerLine(exampleSpan.textContent, wordsPerLine);
             exampleSpan.style.whiteSpace = "pre-line";
             return;
         }
 
-        element.textContent = this.formatWordsPerLine(element.textContent, 20);
+        element.textContent = this.formatWordsPerLine(element.textContent, wordsPerLine);
         element.style.whiteSpace = "pre-line";
     },
 

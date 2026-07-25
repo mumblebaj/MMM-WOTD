@@ -63,6 +63,7 @@ Add the module to the modules array in the `config/config.js` file:
                         retryDelay: 5000,
                         showExamples: true,
                         showExampleTranslations: true,
+                        exampleWordsPerLine: 20,
                         language: ["spanish", "german", "arabic", "dutch"]
                     }
         },
@@ -80,6 +81,7 @@ The following properties can be configured:
 | `rotateInterval`             | Interval at which to roate between languages when multiple languages have been selected
 | `showExamples`               | If you would like to see some example usages of the word set this to `true`. Default is `true` <br><br> **Possible values:** `true` or `false`
 | `showExampleTranslations`    | If you want the example with its English translation set this to `true` <br><br> **Possible values:** `true` or `false`,
+| `exampleWordsPerLine`        | Maximum number of words to render per line for example text blocks (`wotd-wr`, `wotd-we`, `wotd-we2`). Default is `20`.
 | `language`                   | An Array of Languages. Which language WOTD would you like? Various Languages supported<br><br> **Possible values:** `afrikaans`, `arabic`, `bulgarian`, `dutch`, `english`, `filipino`, `finnish`, `french`, `german`, `greek`, `hebrew`, `hindi`, `hungarian`, `indonesian`, `italian`, `japanese`, `korean`, `norwegian`, `persian`, `polish`, `portuguese`, `romanian`, `russian`, `spanish`, `swahili`, `swedish`, `thai`, `turkish`, `urdu`, `vietnamese`
 
 ## Updating
