@@ -26,6 +26,10 @@ If you like my module you can support my work by giving me a star ir buy me a co
 - cheerio@1.0.0-rc.10
 
 ## Updates
+
+### v1.1.1
+- Update axios to 0.30.0
+
 ### v1.1.0
 - Source changed and as a result module had to change. 
 - Updated module to extract the information from new elements

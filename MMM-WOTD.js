@@ -65,6 +65,34 @@ Module.register("MMM-WOTD", {
         }
     },
 
+    formatWordsPerLine: function (text, wordsPerLine) {
+        if (!text || typeof text !== "string") return "";
+        const words = text.trim().split(/\s+/);
+        const lines = [];
+
+        for (let i = 0; i < words.length; i += wordsPerLine) {
+            lines.push(words.slice(i, i + wordsPerLine).join(" "));
+        }
+
+        return lines.join("\n");
+    },
+
+    setWrappedExampleText: function (element, htmlText) {
+        if (!element) return;
+
+        element.innerHTML = htmlText || "";
+        const exampleSpan = element.querySelector(".example-text");
+
+        if (exampleSpan) {
+            exampleSpan.textContent = this.formatWordsPerLine(exampleSpan.textContent, 20);
+            exampleSpan.style.whiteSpace = "pre-line";
+            return;
+        }
+
+        element.textContent = this.formatWordsPerLine(element.textContent, 20);
+        element.style.whiteSpace = "pre-line";
+    },
+
     draw: function (payload) {
         clearTimeout(this.timer);
         wrapper = this.wrapper
@@ -82,9 +110,9 @@ Module.register("MMM-WOTD", {
             mylang.innerHTML = "Language - " + `${t.language}`.toUpperCase()
             wotdword.innerHTML = "Word - " + `${t.data[0].word}`.toUpperCase()
             translation.innerHTML = "Meaning - " + (t.data[0].translation ? `${t.data[0].translation}`.toUpperCase() : "")
-            wr.innerHTML = `${t.data[0].examples.wordex}`
-            we.innerHTML = (t.data[0].examples.wordextr ? `${t.data[0].examples.wordextr}` : "")
-            we2.innerHTML = (t.data[0].examples.wordextr2 ? `${t.data[0].examples.wordextr2}` : "")
+            this.setWrappedExampleText(wr, `${t.data[0].examples.wordex}`)
+            this.setWrappedExampleText(we, (t.data[0].examples.wordextr ? `${t.data[0].examples.wordextr}` : ""))
+            this.setWrappedExampleText(we2, (t.data[0].examples.wordextr2 ? `${t.data[0].examples.wordextr2}` : ""))
 
             setTimeout(() => {
 
@@ -104,9 +132,9 @@ Module.register("MMM-WOTD", {
             mylang.innerHTML = "Language - " + `${t.language}`.toUpperCase()
             wotdword.innerHTML = "Word - " + `${t.data[0].word}`.toUpperCase()
             translation.innerHTML = "Meaning - " + `${t.data[0].translation}`.toUpperCase()
-            wr.innerHTML = `- ${t.data[0].examples.wordex}`
-            we.innerHTML = (t.data[0].examples.wordextr ? `${t.data[0].examples.wordextr}` : "")
-            we2.innerHTML = (t.data[0].examples.wordextr2 ? `${t.data[0].examples.wordextr2}` : "")
+            this.setWrappedExampleText(wr, `- ${t.data[0].examples.wordex}`)
+            this.setWrappedExampleText(we, (t.data[0].examples.wordextr ? `${t.data[0].examples.wordextr}` : ""))
+            this.setWrappedExampleText(we2, (t.data[0].examples.wordextr2 ? `${t.data[0].examples.wordextr2}` : ""))
         }
         return wrapper
     },
